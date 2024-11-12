@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .heading{
+        font-size:3rem;
+        color: rgb(82, 97, 68);
+        padding: 4rem;
+    }
+    .texting{
+        width: 90vw;
+        height: 40vh;
+        border: 7px solid grey;
+        border-radius: 30px;
+        font-size: 2.5rem;
+        
+    }
+
+    .button{
+        font-size: 3.5rem;
+        color: white;
+        background-color: blueviolet;
+        border-radius: 5px;
+        border-radius: 8px;
+        margin: 3rem;
+        padding: 1rem;
+
+    }
+
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Enter what you want to save in MYSQL DATABASE</h1>
+        <form action="/submit" method="post">
+        <div>
+            <input type="text" class="texting" name="data">
+        </div>
+        <div>
+            <input type="submit" name="Submit" class="button">
+        </div>
+        </form>
+    </div>
+</body>
+</html>
