@@ -1,0 +1,35 @@
+services:
+  db:
+    container_name: mydb
+    image: mysql
+    networks:
+      - mynetwork
+    environment:
+      - MYSQL_ROOT_PASSWORD=redhat
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=redhat
+      - MYSQL_DATABASE=mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  py:
+    depends_on:
+      db:
+        condition: service_healthy  # Wait until db is healthy
+    container_name: mypy
+    image: python
+    networks:
+      - mynetwork
+    volumes:
+      - "/root/DevOps_Project/Flask-mysql-Two_tier_app:/app"
+    ports:
+      - 80:80
+    entrypoint: sh -c "pip install flask pymysql cryptography && python /app/myapp.py"
+
+
+networks:
+  mynetwork:
+    driver: bridge

@@ -19,12 +19,15 @@ def submit():
     db(text)
     return redirect('/home')
 
+@app.route('/testing')
+def test():
+    return "I am testing !!!!!"
 
 
 def db(text):
     print(text)
     try:
-        myconnection=pymysql.connect(host='localhost',user='root',passwd='7779979461',database='mysql')
+        myconnection=pymysql.connect(host='mydb',user='root',passwd='redhat',database='mysql')
     
         # result=myconnection.query('create table student(name varchar(20)) ')
         cur=myconnection.cursor()
@@ -36,7 +39,7 @@ def db(text):
             print(f'query registered {text}')
         myconnection.commit()
         # cur.execute('select * from myfirst1')
-        # table = cur.fetchall()
+        # table = cur.fetchall()A
         # for line in table:
         #     print(line)
         # # myconnection.query()
@@ -48,4 +51,5 @@ def db(text):
 
 
 
-app.run(port=80)
+
+app.run(port=80,host='0.0.0.0')
