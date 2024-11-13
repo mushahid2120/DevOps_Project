@@ -1,0 +1,16 @@
+{
+  "name": "node-mongodb",
+  "version": "1.0.0",
+  "description": "First time doing node js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongodb": "^6.10.0",
+    "path": "^0.12.7"
+  }
+}
