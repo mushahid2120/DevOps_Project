@@ -10,7 +10,7 @@ function App() {
 const handleSubmit= async (e)=>{
 e.preventDefault();
  try{
-   const response= await axios.post('http://mynode:4000/submit',{data});
+   const response= await axios.post('/submit',{data});
     // alert(response.data.message);
     setData('');
    } catch(error){
