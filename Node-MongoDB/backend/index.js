@@ -12,7 +12,7 @@ const port = 4000;
 //Database Connection
 // function initDB(){}
     const {MongoClient} =require('mongodb');
-    const url='mongodb://172.17.0.2:27017'
+    const url='mongodb://mydb:27017'
     const client=new MongoClient(url);
 
 
