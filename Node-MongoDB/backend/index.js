@@ -38,6 +38,7 @@ app.get('/page', (req, res) => {
 
 app.post('/submit', async (req, res) => {
   const { data } = req.body;
+
   if (!data) {
     return res.status(400).json({ error: 'No data received' });
   }
