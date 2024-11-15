@@ -13,7 +13,16 @@ const port = 4000;
 // function initDB(){}
     const {MongoClient} =require('mongodb');
     const url='mongodb://mydb:27017'
-    const client=new MongoClient(url);
+    let db;
+ MongoClient.connect(url, { useUnifiedTopology: true })
+  .then((client) => {
+    db = client.db('node-react'); // Assign database instance
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('Failed to connect to MongoDB:', error);
+    process.exit(1); // Exit if unable to connect
+  });
 
 
 //Routing Related Stuff
@@ -55,8 +64,8 @@ function testing(data){
 // Database Operation
 async function storeData(data){
 
-    let result = await client.connect(url);
-    let db=result.db('node-react');
+    // let result = await client.connect(url);
+    // let db=result.db('node-react');
     let collection=db.collection('node-react-collection');
     let insertDoc=await collection.insertOne({"Respose": `${data}`});
     let response=await collection.find({}).toArray();
