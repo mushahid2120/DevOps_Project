@@ -1,0 +1,6 @@
+FROM node:lts-jod
+RUN git clone https://github.com/mushahid2120/DevOps_Project.git
+WORKDIR DevOps_Project/Node-MongoDB/backend/
+RUN npm install
+EXPOSE 4000
+CMD [ "npm", "run", "start"]

@@ -1,0 +1,26 @@
+services:
+  database:
+    container_name: mydb
+    image: mongo
+    networks:
+      - mynetwork
+
+  backend:
+    depends_on:
+      - database
+    container_name: mynode
+    build:
+      context: .
+      dockerfile: Node
+      args:
+        CACHEBUST: 1
+    image: 'mushahid2120/express:v1'
+    networks:
+      - mynetwork
+    expose:
+      - 4000
+    ports:
+      - 4000:4000
+networks:
+  mynetwork:
+    driver:  bridge

@@ -1,0 +1,43 @@
+services:
+  database:
+    container_name: mydb
+    image: mongo
+    networks:
+      - mynetwork
+
+  backend:
+    depends_on:
+      - database
+    container_name: mynode
+    build:
+      context: .
+      dockerfile: Node
+      args:
+        CACHEBUST: 1
+    image: 'mushahid2120/express:v1'
+    networks:
+      - mynetwork
+    expose:
+      - 4000
+
+  frontend:
+    depends_on:
+      - backend
+    container_name: myreact
+    build:
+      context: .
+      dockerfile: React
+      args:
+        CACHEBUST: 1
+    image: mushahid2120/react:v1
+    networks:
+      - mynetwork
+    expose:
+      - 5173
+    ports:
+      - 80:5173
+
+
+networks:
+  mynetwork:
+    driver:  bridge
